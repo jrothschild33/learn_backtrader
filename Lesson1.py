@@ -9,8 +9,8 @@ import datetime
 # 实例化 cerebro
 cerebro = bt.Cerebro()
 
-daily_price = pd.read_csv("data/daily_price.csv", parse_dates=['datetime'])
-trade_info = pd.read_csv("data/trade_info.csv", parse_dates=['trade_date'])
+daily_price = pd.read_csv("Data/daily_price.csv", parse_dates=['datetime'])
+trade_info = pd.read_csv("Data/trade_info.csv", parse_dates=['trade_date'])
 
 #%%
 

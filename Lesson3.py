@@ -31,14 +31,12 @@ def get_data_bytushare(code,start_date,end_date):
     df.index = df.trade_date
     df.sort_index(inplace=True)
     df.fillna(0.0,inplace=True)
-
     return df
 
 # 恒瑞医药
 data1 = get_data_bytushare('600276.SH','20200101','20211015')
 # 贵州茅台
 data2 = get_data_bytushare('600519.SH','20200101','20211015')
-
 #%%
 
 # 第1节 建议在 __init__() 中提前计算指标
@@ -284,7 +282,7 @@ class My_MACD(bt.Indicator):
     params = (('period_me1',12),
               ('period_me2', 26),
               ('period_signal', 9),)
-              
+
     def __init__(self):
         me1 = btind.EMA(self.data, period=self.p.period_me1)
         me2 = btind.EMA(self.data, period=self.p.period_me2)
