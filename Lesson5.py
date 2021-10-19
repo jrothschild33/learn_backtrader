@@ -2,37 +2,6 @@
 # link: https://mp.weixin.qq.com/s/CJwSpvS07JLT4xhO19SOeA
 
 #%%
-import backtrader as bt
-import backtrader.indicators as btind # 导入策略分析模块
-import pandas as pd
-import datetime
-
-import tushare as ts
-import json
-with open(r'Data/tushare_token.json','r') as load_json:
-    token_json = json.load(load_json)
-token = token_json['token']
-ts.set_token(token) 
-pro = ts.pro_api(token)
-#%%
-# 使用Tushare获取数据，要严格保持OHLC的格式
-
-def get_data_bytushare(code,start_date,end_date):
-    df = ts.pro_bar(ts_code=code, adj='qfq',start_date=start_date, end_date=end_date)
-    df = df[['trade_date', 'open', 'high', 'low', 'close','vol']]
-    df.columns = ['trade_date', 'open', 'high', 'low', 'close','volume']
-    df.trade_date = pd.to_datetime(df.trade_date)
-    df.index = df.trade_date
-    df.sort_index(inplace=True)
-    df.fillna(0.0,inplace=True)
-    return df
-
-# 恒瑞医药
-data1 = get_data_bytushare('600276.SH','20200101','20211015')
-# 贵州茅台
-data2 = get_data_bytushare('600519.SH','20200101','20211015')
-# =============================================================================
-#%%
 # 第1章 Order 中的交易订单
 '''
 Order.Market
