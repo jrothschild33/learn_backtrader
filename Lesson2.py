@@ -1,5 +1,7 @@
 # Lesson2：Backtrader来啦：数据篇
 # link: https://mp.weixin.qq.com/s/NTct2_AYhz4Z8q5MYtBQcA
+#%%
+
 
 #%%
 import backtrader as bt
@@ -7,7 +9,10 @@ import pandas as pd
 import datetime
 
 import tushare as ts
-token = 'd9645bfd8516b93f1312d8ba696c83b606a78d966e71ec5c1e79bef4'
+import json
+with open(r'Data/tushare_token.json','r') as load_json:
+    token_json = json.load(load_json)
+token = token_json['token']
 ts.set_token(token) 
 pro = ts.pro_api(token)
 #%%
